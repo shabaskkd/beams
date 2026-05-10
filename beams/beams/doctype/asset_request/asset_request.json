@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:AR-{YY}-{#####}",
+ "creation": "2025-09-25 13:06:24.899825",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_acln",
+  "requested_by",
+  "employee_name",
+  "bureau",
+  "column_break_amir",
+  "item_type",
+  "required_by",
+  "section_break_lwff",
+  "items",
+  "purpose",
+  "allocated_assets",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_acln",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Requested By",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Item Type",
+   "options": "\nTechnical Item\nNon-Technical Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_amir",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "required_by",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Required By",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_lwff",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items ",
+   "options": "Asset Request Item"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Small Text",
+   "label": "Purpose"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "allocated_assets",
+   "fieldtype": "Table",
+   "label": "Allocated Assets",
+   "options": "Asset Movement Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Asset Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "requested_by.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bureau",
+   "fieldtype": "Link",
+   "label": "Bureau",
+   "options": "Bureau"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Asset Movement",
+   "link_fieldname": "reference_name"
+  }
+ ],
+ "modified": "2025-10-09 11:21:58.030833",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Asset Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "requested_by, item_type, required_by",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

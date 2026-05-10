@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{division}-{department_abbreviation}",
+ "creation": "2024-10-01 10:39:21.831573",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "department",
+  "department_abbreviation",
+  "company",
+  "column_break_ncbr",
+  "division"
+ ],
+ "fields": [
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "department.abbreviation",
+   "fieldname": "department_abbreviation",
+   "fieldtype": "Data",
+   "label": "Department Abbreviation",
+   "options": "Department"
+  },
+  {
+   "fieldname": "division",
+   "fieldtype": "Data",
+   "label": "Division",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ncbr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bata_cost_head",
+   "fieldtype": "Link",
+   "label": "Bata Cost Head",
+   "options":"Cost Head",
+   "insert_after": "company"
+  },
+  {
+   "fieldname": "bata_account",
+   "fieldtype": "Link",
+   "label": "Bata Account",
+   "options":"Account",
+   "insert_after": "bata_cost_head",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fuel_cost_head",
+   "fieldtype": "Link",
+   "label": "Fuel Cost Head",
+   "options":"Cost Head",
+   "insert_after": "bata_account"
+  },
+  {
+   "fieldname": "fuel_account",
+   "fieldtype": "Link",
+   "label": "Fuel Account",
+   "options":"Account",
+   "insert_after": "fuel_cost_head",
+   "read_only": 1
+  },
+  {
+   "fieldname": "travel_cost_head",
+   "fieldtype": "Link",
+   "label": "Travel Cost Head",
+   "options":"Cost Head",
+   "insert_after": "fuel_account"
+  },
+  {
+   "fieldname": "travel_account",
+   "fieldtype": "Link",
+   "label": " Travel Account",
+   "options":"Account",
+   "insert_after": "travel_cost_head",
+   "read_only": 1
+  },
+  {
+   "fieldname": "repair_cost_head",
+   "fieldtype": "Link",
+   "label": "Repair Cost Head",
+   "options":"Cost Head",
+   "insert_after": "travel_account"
+  },
+  {
+   "fieldname": "repair_account",
+   "fieldtype": "Link",
+   "label": "Repair Account",
+   "options":"Account",
+   "insert_after": "repair_cost_head",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-13 11:53:58.870718",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Division",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

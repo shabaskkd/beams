@@ -1,0 +1,832 @@
+{% extends "templates/web.html" %}
+
+{% block header %}
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f9fafb;
+  }
+
+  /* Custom styles */
+  .remove-btn {
+    display: none;
+  }
+
+  .suggested-item:hover .remove-btn {
+    display: block;
+  }
+
+  .specs-section {
+    display: none;
+  }
+
+  .specs-section.show {
+    display: block;
+  }
+
+  /* Header */
+  .header-container {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    padding-right: 76px;
+    margin-bottom: 24px;
+    padding-right: 27rem;
+    margin-left: 1rem;
+    padding-top: 0.6rem;
+  }
+
+  .header-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 8px;
+  }
+
+  .header-meta {
+    color: #4b5563;
+    margin-bottom: 0;
+  }
+
+  /* Main Container */
+  .main-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* Instructions Box */
+  .instructions-box {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .instructions-box strong {
+    font-weight: 600;
+  }
+
+  /* Items Container */
+  .items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  /* Item Card */
+  .item-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+    transition: box-shadow 0.2s ease;
+    position: relative;
+  }
+
+  .item-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    gap: 28px;
+  }
+
+  @media (min-width: 768px) {
+    .card-grid {
+      grid-template-columns: repeat(12, 1fr);
+      align-items: start;
+    }
+  }
+
+  .col-span-4 {
+    grid-column: span 1;
+  }
+
+  @media (min-width: 768px) {
+    .col-span-4 {
+      grid-column: span 4;
+    }
+  }
+
+  .col-span-2 {
+    grid-column: span 1;
+  }
+
+  @media (min-width: 768px) {
+    .col-span-2 {
+      grid-column: span 2;
+    }
+  }
+
+  /* Item Title and Description */
+  .item-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 8px;
+  }
+
+  .item-description {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 12px;
+  }
+
+  .item-code {
+    margin-left: 8px;
+    color: #9ca3af;
+    font-size: 12px;
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 4px;
+  }
+
+  .badge-suggested {
+    background-color: #facc15;
+    color: #000000;
+  }
+
+  /* Form Controls */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 4px;
+  }
+
+  .form-label .required {
+    color: #ef4444;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .form-textarea {
+    resize: vertical;
+  }
+
+  .form-help {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .form-uom {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* Currency Input */
+  .currency-wrapper {
+    display: flex;
+  }
+
+  .currency-symbol {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 14px;
+    color: #6b7280;
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+  }
+
+  .currency-wrapper .form-input {
+    border-radius: 0 6px 6px 0;
+    border-left: none;
+  }
+
+  /* Amount Display */
+  .amount-display {
+    background-color: #f9fafb;
+  }
+
+  .amount-display:focus {
+    background-color: #f9fafb;
+  }
+
+  /* Button */
+  .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #374151;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+  }
+
+  .btn:hover {
+    background-color: #f3f4f6;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 12px 24px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #f3f4f6;
+  }
+
+  .btn-remove {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    background-color: #dc2626;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .btn-remove:hover {
+    background-color: #991b1b;
+  }
+
+  /* Specifications Section */
+  .specs-section {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  .specs-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 16px;
+  }
+
+  .specs-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .specs-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .specs-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Add New Product Button */
+  .add-product-section {
+    text-align: center;
+    margin-bottom: 24px;
+    margin-top: 16px;
+  }
+
+  .btn-add-product {
+    padding: 8px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-add-product:hover {
+    background-color: #f3f4f6;
+  }
+
+  /* Grand Total */
+  .grand-total-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .grand-total-amount {
+    text-align: right;
+    font-size: 18px;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .grand-total-note {
+    text-align: right;
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+
+  /* Notes Section */
+  .notes-section {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .notes-header {
+    background-color: #f9fafb;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .notes-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+  }
+
+  .notes-body {
+    padding: 16px;
+  }
+
+  .notes-textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+  }
+
+  .notes-textarea:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .action-buttons .btn-primary {
+    width: auto;
+    min-width: 200px;
+  }
+
+  /* Border Colors for Rate Input */
+  .rate-input-error {
+    border-color: #fca5a5 !important;
+  }
+
+  .rate-input-success {
+    border-color: #86efac !important;
+  }
+
+  /* Input Styling */
+  input[type="number"],
+  input[type="text"],
+  textarea {
+    font-size: 14px;
+  }
+</style>
+
+<div class="header-container">
+  <h1 class="header-title">{{ doc.name }}</h1>
+  <p class="header-meta">
+    Supplier: {{ doc.supplier }} | Date: {{ doc.get_formatted("transaction_date") }}
+  </p>
+</div>
+{% endblock %}
+
+{% block page_content %}
+<div class="main-container">
+
+  <div class="instructions-box">
+    <strong>Instructions:</strong> Enter your rates and quantities. Only items with rates will be included in the quotation. Click "Add Specifications" for detailed specs. Use "Add New Product" to suggest alternatives.
+  </div>
+
+  <!-- Items Section -->
+  <div id="items-container" class="items-container">
+    {% if doc.items %}
+      {% for d in doc.items %}
+      <div class="item-card" data-idx="{{ d.idx }}" data-item-code="{{ d.item_code }}" data-is-original="true">
+        <div class="card-grid">
+          
+          <div class="col-span-4">
+            <h5 class="item-title">{{ d.item_name }}</h5>
+            <p class="item-description">
+              {{ d.description or "" }}
+              {% if d.item_code %}
+              <span class="item-code">[Code: {{ d.item_code }}]</span>
+              {% endif %}
+            </p>
+            <span class="badge">Original Item</span>
+          </div>
+
+          <div class="col-span-2">
+            <div class="form-group">
+              <label class="form-label">Quantity</label>
+              <input type="number" class="qty-input form-input"
+                     value="{{ d.qty }}" min="0"
+                     oninput="restrictNegative(this)"
+                     onchange="calculateAmount(this)" />
+              <span class="form-uom">{{ d.uom }}</span>
+            </div>
+          </div>
+
+          <div class="col-span-2">
+            <div class="form-group">
+              <label class="form-label">Rate <span class="required">*</span></label>
+              <div class="currency-wrapper">
+                <span class="currency-symbol">{{ doc.currency_symbol or "₹" }}</span>
+                <input type="number" value="0" class="rate-input form-input"
+                       placeholder="0.00" step="0.01" min="0"
+                       oninput="restrictNegative(this)"
+                       onchange="calculateAmount(this)" />
+              </div>
+              <small class="form-help">Required to include item</small>
+            </div>
+          </div>
+
+          <div class="col-span-2">
+            <div class="form-group">
+              <label class="form-label">Amount</label>
+              <input type="text" class="amount-display form-input" value="{{ doc.currency_symbol or '₹' }}0.00" readonly />
+            </div>
+          </div>
+
+          <div class="col-span-2">
+            <div class="form-group">
+              <label class="form-label">&nbsp;</label>
+              <button type="button" class="btn" onclick="toggleSpecs(this)">Add Specifications</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Specs -->
+        <div class="specs-section">
+          <h6 class="specs-title">Product Specifications</h6>
+          <div class="specs-grid">
+            <div class="specs-column">
+              <div class="form-group">
+                <label class="form-label">Brand</label>
+                <input type="text" name="brand" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Model</label>
+                <input type="text" name="model" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Warranty</label>
+                <input type="text" name="warranty" class="form-input" />
+              </div>
+            </div>
+
+            <div class="specs-column">
+              <div class="form-group">
+                <label class="form-label">Lead Time</label>
+                <input type="text" name="lead_time" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Item Description</label>
+                <textarea name="item_description" rows="3" class="form-textarea"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Add New Product -->
+  <div class="add-product-section">
+    <button class="btn-add-product" onclick="addNewProduct()">+ Add New Product</button>
+  </div>
+
+  <!-- Grand Total -->
+  <div class="grand-total-section">
+    <div class="grand-total-amount">
+      Grand Total: {{ doc.currency_symbol or "₹" }}<span id="grandTotal">0.00</span>
+    </div>
+    <div class="grand-total-note">Only items with rates are included</div>
+  </div>
+
+  <!-- Notes + Submit -->
+  <div class="notes-section">
+    <div class="notes-header"><h3>Additional Notes</h3></div>
+    <div class="notes-body">
+      <textarea rows="4" class="notes-textarea"></textarea>
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    {% if doc.items %}
+    <button class="btn-primary" onclick="submitQuotation()">Create Quotation</button>
+    {% endif %}
+  </div>
+
+</div>
+
+<script>
+
+
+  function restrictNegative(el) {
+    if (parseFloat(el.value) < 0) el.value = 0;
+  }
+
+
+
+  function calculateAmount(element) {
+    const card = element.closest(".item-card");
+    const qty = parseFloat(card.querySelector(".qty-input").value) || 0;
+    const rate = parseFloat(card.querySelector(".rate-input").value) || 0;
+    const amount = qty * rate;
+    const currencySymbol = "{{ doc.currency_symbol or '₹' }}";
+
+    card.querySelector(".amount-display").value =
+      currencySymbol + amount.toFixed(2);
+
+    calculateGrandTotal();
+    updateItemStatus(card, rate);
+  }
+
+  function updateItemStatus(card, rate) {
+    const rateInput = card.querySelector(".rate-input");
+
+    if (card.hasAttribute("data-is-suggested")) {
+      if (rate > 0) {
+        rateInput.classList.remove("rate-input-error");
+        rateInput.classList.add("rate-input-success");
+      } else {
+        rateInput.classList.add("rate-input-error");
+        rateInput.classList.remove("rate-input-success");
+      }
+    } else {
+      rateInput.classList.remove("rate-input-error");
+      rateInput.classList.remove("rate-input-success");
+    }
+  }
+
+  function calculateGrandTotal() {
+    let total = 0;
+
+    document.querySelectorAll(".item-card").forEach((card) => {
+      const rate = parseFloat(card.querySelector(".rate-input").value) || 0;
+      if (rate > 0) {
+        const val = card.querySelector(".amount-display").value.replace(/[^0-9.-]/g, "");
+        total += parseFloat(val) || 0;
+      }
+    });
+
+    document.getElementById("grandTotal").textContent = total.toFixed(2);
+  }
+
+  function toggleSpecs(button) {
+    const specs = button.closest(".item-card").querySelector(".specs-section");
+    specs.classList.toggle("show");
+    button.textContent = specs.classList.contains("show")
+      ? "Hide Specifications"
+      : "Add Specifications";
+  }
+
+  function removeItem(button) {
+    button.closest(".item-card").remove();
+    calculateGrandTotal();
+  }
+
+  function addNewProduct() {
+    const container = document.getElementById("items-container");
+
+    const newItem = document.createElement("div");
+    newItem.className = "item-card suggested-item";
+    newItem.setAttribute("data-is-suggested", "true");
+
+    newItem.innerHTML = `
+      <button class="remove-btn btn-remove" onclick="removeItem(this)">×</button>
+      <div class="card-grid">
+
+        <div class="col-span-4">
+          <input type="text" placeholder="Product Name" class="product-name-input form-input" required>
+          <textarea placeholder="Product Description" rows="2" class="product-description-input form-textarea" style="margin-top: 8px; margin-bottom: 12px;"></textarea>
+          <span class="badge badge-suggested">Suggested Product</span>
+        </div>
+
+        <div class="col-span-2">
+          <label class="form-label">Quantity</label>
+          <input type="number" value="1" class="qty-input form-input"
+                 min="1" oninput="restrictNegative(this)"
+                 onchange="calculateAmount(this)">
+          <input type="text" class="uom-input form-input" value="Nos" style="margin-top: 8px;">
+        </div>
+
+        <div class="col-span-2">
+          <label class="form-label">Rate *</label>
+          <div class="currency-wrapper">
+            <span class="currency-symbol">{{ doc.currency_symbol or "₹" }}</span>
+            <input type="number" class="rate-input form-input rate-input-error"
+                   step="0.01" placeholder="0.00" min="0"
+                   oninput="restrictNegative(this)"
+                   onchange="calculateAmount(this)">
+          </div>
+        </div>
+
+        <div class="col-span-2">
+          <label class="form-label">Amount</label>
+          <input type="text" readonly class="amount-display form-input"
+                 value="{{ doc.currency_symbol or '₹' }}0.00">
+        </div>
+
+        <div class="col-span-2">
+          <button type="button" class="btn" onclick="toggleSpecs(this)">Add Specifications</button>
+        </div>
+
+      </div>
+
+      <div class="specs-section">
+        <h6 class="specs-title">Product Specifications</h6>
+        <div class="specs-grid">
+          <div class="specs-column">
+            <input type="text" name="brand" placeholder="Brand" class="form-input">
+            <input type="text" name="model" placeholder="Model" class="form-input">
+            <input type="text" name="warranty" placeholder="Warranty" class="form-input">
+          </div>
+          <div class="specs-column">
+            <input type="text" name="lead_time" placeholder="Lead Time" class="form-input">
+            <textarea name="item_description" placeholder="Item Description" rows="3" class="form-textarea"></textarea>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(newItem);
+  }
+
+  function getOriginalItemData(card) {
+    return {
+      item_code: card.dataset.itemCode || "",
+      item_name: card.querySelector("h5")?.textContent || "",
+      description: card.querySelector(".item-description")?.textContent || "",
+      item_description: card.querySelector("textarea[name='item_description']")?.value || "",
+      qty: parseFloat(card.querySelector(".qty-input").value) || 0,
+      uom: card.querySelector(".form-uom")?.textContent || "",
+      rate: parseFloat(card.querySelector(".rate-input").value) || 0,
+      brand: card.querySelector("input[name='brand']")?.value || "",
+      model: card.querySelector("input[name='model']")?.value || "",
+      warranty: card.querySelector("input[name='warranty']")?.value || "",
+      lead_time: card.querySelector("input[name='lead_time']")?.value || ""
+    };
+  }
+
+  function getSuggestedItemData(card) {
+    const rate = parseFloat(card.querySelector(".rate-input").value) || 0;
+    const qty = parseFloat(card.querySelector(".qty-input").value) || 1;
+
+    return {
+      product_name: card.querySelector(".product-name-input")?.value || "",
+      product_description: card.querySelector(".product-description-input")?.value || "",
+      item_description: card.querySelector("textarea[name='item_description']")?.value || "",
+      quantity: qty,
+      uom: card.querySelector(".uom-input")?.value || "",
+      rate: rate,
+      amount: qty * rate
+    };
+  }
+
+  function collectFormData() {
+    const originalItems = [];
+    const suggestedItems = [];
+
+    document.querySelectorAll(".item-card").forEach((card) => {
+      if (card.hasAttribute("data-is-original")) {
+        originalItems.push(getOriginalItemData(card));
+      } else if (card.hasAttribute("data-is-suggested")) {
+        const item = getSuggestedItemData(card);
+        if (item.rate > 0) suggestedItems.push(item);
+      }
+    });
+
+    return {
+      supplier: "{{ doc.supplier }}",
+      rfq: "{{ doc.name }}",
+      items: originalItems,
+      suggested_items: suggestedItems,
+      notes: document.querySelector(".notes-textarea")?.value || ""
+    };
+  }
+
+  function validateForm() {
+    let ok = true;
+
+    document.querySelectorAll("[data-is-suggested]").forEach(card => {
+      const rate = parseFloat(card.querySelector(".rate-input").value) || 0;
+      if (rate === 0) {
+        ok = false;
+        card.querySelector(".rate-input").classList.add("rate-input-error");
+      }
+    });
+
+    return ok;
+  }
+
+  function submitQuotation() {
+
+    if (!validateForm()) {
+      frappe.msgprint("Please enter rate for suggested items.");
+      return;
+    }
+
+    frappe.confirm(
+      "Submit quotation? Only items with rates will be included.",
+      () => {
+        frappe.call({
+          method: "beams.templates.pages.request_for_quotation.save_supplier_quotation",
+          args: { data: JSON.stringify(collectFormData()) },
+          freeze: true,
+          freeze_message: "Submitting...",
+          callback: function (r) {
+            if (!r.exc) {
+              frappe.msgprint("Quotation submitted successfully!");
+              location.reload();
+            }
+          }
+        });
+      }
+    );
+  }
+
+</script>
+
+{% endblock %}

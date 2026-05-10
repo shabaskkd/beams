@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{VR}-{DD}-{MM}-{####}",
+ "creation": "2025-04-25 14:59:32.825122",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tgtp",
+  "visitor_type",
+  "visitor_name",
+  "person_to_meet",
+  "contact_number",
+  "purpose_of_visit",
+  "amended_from",
+  "column_break_gbkg",
+  "request_date",
+  "expected_date_and_time",
+  "approval_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_tgtp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Visit Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "visitor_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Visitor Type",
+   "options": "Visitor Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purpose_of_visit",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Purpose of Visit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "person_to_meet",
+   "fieldtype": "Link",
+   "label": "Person to Meet",
+   "options": "Employee"
+  },
+  {
+   "default": "Today",
+   "fieldname": "request_date",
+   "fieldtype": "Date",
+   "label": "Posting  Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_status",
+   "fieldtype": "Select",
+   "label": "Approval Status",
+   "options": "\nPending\nApproved\nRejected"
+  },
+  {
+   "fieldname": "column_break_gbkg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visitor_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Visitor Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expected_date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Expected Date and Time"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-02 14:12:01.602567",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Visit Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

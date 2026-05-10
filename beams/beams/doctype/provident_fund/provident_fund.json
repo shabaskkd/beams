@@ -1,0 +1,273 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format: PF-{employee_id}",
+ "creation": "2024-11-26 14:34:05.866299",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_id",
+  "employee_name",
+  "name_of_father",
+  "company",
+  "column_break_lwqx",
+  "gender",
+  "date_of_birth",
+  "designation",
+  "department",
+  "address_and_contacts_section",
+  "mobile",
+  "permanent_address",
+  "column_break_fomp",
+  "email",
+  "current_address",
+  "previous_employment_details_tab",
+  "earlier_provident_fund",
+  "earlier_pension_scheme",
+  "details_uan",
+  "uan",
+  "previous_member_id",
+  "is_schema_certificate",
+  "column_break_tizj",
+  "date_of_exit_for_previous_member_id",
+  "is_pension_payment_order",
+  "other_details_tab",
+  "international_worker",
+  "country_of_origin",
+  "column_break_crbu",
+  "specially_abled",
+  "category",
+  "details_of_uan",
+  "educational_qualification",
+  "column_break_xfjn",
+  "section_break_rsiu",
+  "kyc_details"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "earlier_provident_fund",
+   "fieldtype": "Check",
+   "label": "Whether earlier a member of the employee's Provident Fund scheme,1952?"
+  },
+  {
+   "fieldname": "previous_employment_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Previous Employment Details"
+  },
+  {
+   "fieldname": "details_of_uan",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "other_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Other Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "international_worker",
+   "fieldtype": "Check",
+   "label": "International Worker"
+  },
+  {
+   "depends_on": "eval:doc.international_worker",
+   "fieldname": "country_of_origin",
+   "fieldtype": "Data",
+   "label": "Country of Origin"
+  },
+  {
+   "fieldname": "educational_qualification",
+   "fieldtype": "Select",
+   "label": "Educational Qualification",
+   "options": "Illiterate\nNon-Matric\nMatric\nSenior Secondary\nGraduate\nPost Graduate\nDoctor\nTechnical/Professional"
+  },
+  {
+   "default": "0",
+   "fieldname": "specially_abled",
+   "fieldtype": "Check",
+   "label": "Specially Abled"
+  },
+  {
+   "depends_on": "eval:doc.specially_abled",
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Locomotive\nVisual\nHearing"
+  },
+  {
+   "fieldname": "kyc_details",
+   "fieldtype": "Table",
+   "label": "KYC Details",
+   "options": "KYC Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "earlier_pension_scheme",
+   "fieldtype": "Check",
+   "label": "Whether earlier a member of the employee's Pension Scheme,1995?"
+  },
+  {
+   "fieldname": "details_uan",
+   "fieldtype": "Section Break",
+   "label": " Details of the Universal Account Number(UAN) or previous PF member ID"
+  },
+  {
+   "fieldname": "uan",
+   "fieldtype": "Data",
+   "label": "UAN"
+  },
+  {
+   "fieldname": "date_of_exit_for_previous_member_id",
+   "fieldtype": "Date",
+   "label": "Date of Exit for previous member Id"
+  },
+  {
+   "fieldname": "is_schema_certificate",
+   "fieldtype": "Data",
+   "label": "Scheme Certificate Number(If scheme certificate issued for previous employment)"
+  },
+  {
+   "fieldname": "is_pension_payment_order",
+   "fieldtype": "Data",
+   "label": "PPO Number(If pension payment order(PPO) issued for previous employment)"
+  },
+  {
+   "fieldname": "column_break_tizj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xfjn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rsiu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "employee_id.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "employee_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee ",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee_id.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "address_and_contacts_section",
+   "fieldtype": "Section Break",
+   "label": "Address and Contacts"
+  },
+  {
+   "fetch_from": "employee_id.cell_number",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "fieldname": "column_break_lwqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee_id.designation",
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation"
+  },
+  {
+   "fieldname": "column_break_fomp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fetch_from": "employee_id.name_of_father",
+   "fieldname": "name_of_father",
+   "fieldtype": "Data",
+   "label": "Father's Name"
+  },
+  {
+   "fetch_from": "employee_id.gender",
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "fetch_from": "employee_id.date_of_birth",
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fetch_from": "employee_id.permanent_address",
+   "fieldname": "permanent_address",
+   "fieldtype": "Small Text",
+   "label": "Permanent Address"
+  },
+  {
+   "fetch_from": "employee_id.current_address",
+   "fieldname": "current_address",
+   "fieldtype": "Small Text",
+   "label": "Current Address"
+  },
+  {
+   "fieldname": "previous_member_id",
+   "fieldtype": "Data",
+   "label": "Previous Member ID"
+  },
+  {
+   "fieldname": "column_break_crbu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee_id.prefered_email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": " Email"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-06 10:53:43.780076",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Provident Fund",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

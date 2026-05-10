@@ -1,0 +1,437 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:ETR-{YY}-{####}",
+ "creation": "2025-01-21 15:03:16.620880",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_zi7v",
+  "requested_by",
+  "is_group",
+  "travellers",
+  "number_of_travellers",
+  "is_vehicle_required",
+  "is_unplanned",
+  "column_break_ooli",
+  "posting_date",
+  "from_bureau",
+  "is_management_employee",
+  "is_budgeted",
+  "is_budget_exceeded",
+  "has_bureau_head_role",
+  "travel_details_section",
+  "travel_type",
+  "batta_policy",
+  "mode_of_travel",
+  "source",
+  "destination",
+  "accommodation_required",
+  "inside_kerala",
+  "column_break_xmae",
+  "start_date",
+  "end_date",
+  "total_days",
+  "remarks",
+  "expected_check_in_time",
+  "expected_check_out_time",
+  "amended_from",
+  "section_break_ktsj",
+  "mark_attendance",
+  "attendance_request",
+  "travel_vehicle_allocation",
+  "attachments",
+  "expense_claim_html",
+  "journal_entry_expenses_table",
+  "reason_for_rejection"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_zi7v",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Employee Travel Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Requested By",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "depends_on": "eval:doc.is_group;",
+   "fieldname": "travellers",
+   "fieldtype": "Table MultiSelect",
+   "ignore_user_permissions": 1,
+   "label": "Travellers",
+   "options": "Traveller"
+  },
+  {
+   "fieldname": "travel_details_section",
+   "fieldtype": "Section Break",
+   "label": "Travel Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_unplanned",
+   "fieldtype": "Check",
+   "label": "Is Unplanned "
+  },
+  {
+   "fieldname": "travel_type",
+   "fieldtype": "Link",
+   "label": "Purpose of Travel",
+   "options": "Purpose of Travel",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_days",
+   "fieldtype": "Float",
+   "label": "Total Days ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source",
+   "reqd": 1
+  },
+  {
+   "fieldname": "destination",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Destination",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xmae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ooli",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:(!doc.is_group);",
+   "fieldname": "batta_policy",
+   "fieldtype": "Link",
+   "label": "Batta Policy",
+   "options": "Batta Policy",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mode_of_travel",
+   "fieldtype": "Link",
+   "label": "Mode of Travel",
+   "options": "Mode of Travel"
+  },
+  {
+   "default": "0",
+   "fieldname": "accommodation_required",
+   "fieldtype": "Check",
+   "label": "Accommodation Required "
+  },
+  {
+   "default": "0",
+   "description": "To mark Attendance for Travel Days",
+   "fieldname": "mark_attendance",
+   "fieldtype": "Check",
+   "label": "Mark Attendance"
+  },
+  {
+   "depends_on": "eval:doc.accommodation_required;",
+   "fieldname": "expected_check_in_time",
+   "fieldtype": "Datetime",
+   "label": "Expected Check-in Time "
+  },
+  {
+   "depends_on": "eval:doc.accommodation_required;",
+   "fieldname": "expected_check_out_time",
+   "fieldtype": "Datetime",
+   "label": "Expected Check-out Time "
+  },
+  {
+   "fieldname": "section_break_ktsj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "inside_kerala",
+   "fieldtype": "Check",
+   "label": "Inside Kerala"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.workflow_state==\"Pending\" || doc.workflow_state==\"Rejected\" || doc.workflow_state==\"Approved by HOD\" || doc.workflow_state==\"Pending Admin Approval\" || doc.workflow_state==\"Pending Coordinator Approval\" || doc.workflow_state==\"Verified By Coordinating Editor\" || doc.workflow_state==\"Rejected by Coordinator\"",
+   "fieldname": "reason_for_rejection",
+   "fieldtype": "Small Text",
+   "label": "Reason for Rejection ",
+   "read_only_depends_on": "eval:doc.workflow_state == \"Rejected\" || doc.workflow_state == \"Rejected by Coordinator\"\n"
+  },
+  {
+   "fieldname": "attendance_request",
+   "fieldtype": "Link",
+   "label": "Attendance Request",
+   "options": "Attendance Request",
+   "read_only": 1
+  },
+  {
+   "fieldname": "number_of_travellers",
+   "fieldtype": "Int",
+   "label": "Number of Travellers",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_vehicle_required",
+   "fieldtype": "Check",
+   "label": "Vehicle Requried (Media One)"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "travel_vehicle_allocation",
+   "fieldtype": "Table",
+   "label": "Travel Vehicle Allocation",
+   "mandatory_depends_on": "eval:\ndoc.is_vehicle_required == 1 &&\n['Approved by HOD', 'Pending Admin Approval'].includes(doc.workflow_state)\n",
+   "options": "Vehicle Allocation"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "attachments",
+   "fieldtype": "Table",
+   "label": "Attachments",
+   "options": "Attachment Detail"
+  },
+  {
+   "fieldname": "expense_claim_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "journal_entry_expenses_table",
+   "fieldtype": "Table",
+   "label": "Journal Entry Expenses Table",
+   "options": "Journal Entry Expenses",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_management_employee",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Management Employee"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_budgeted",
+   "fieldtype": "Check",
+   "label": "Is Budgeted"
+  },
+  {
+   "default": "0",
+   "fieldname": "from_bureau",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "From Bureau"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_bureau_head_role",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Has Bureau Head Role"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.is_budgeted == 1",
+   "fieldname": "is_budget_exceeded",
+   "fieldtype": "Check",
+   "label": "Is Budget Exceeded"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Expense Claim",
+   "link_fieldname": "travel_request"
+  },
+  {
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "employee_travel_request"
+  },
+  {
+   "link_doctype": "Trip Sheet",
+   "link_fieldname": "employee_travel_request"
+  },
+  {
+   "link_doctype": "Batta Claim",
+   "link_fieldname": "travel_request"
+  }
+ ],
+ "modified": "2026-02-05 15:08:09.440498",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Employee Travel Request",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HOD",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Coordinating Editor",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HOD",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Coordinating Editor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "requested_by",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

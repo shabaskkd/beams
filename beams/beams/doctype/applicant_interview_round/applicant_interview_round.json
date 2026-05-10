@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-23 10:10:03.364538",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "interview_round",
+  "interview_reference",
+  "interview_status",
+  "create_interview",
+  "interview_completed",
+  "applicant_rating"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "interview_round",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Interview Round",
+   "options": "Interview Round",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "interview_reference",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Interview Reference",
+   "options": "Interview",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "interview_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Interview Status",
+   "options": "Pending\nUnder Review\nCleared\nRejected",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "create_interview",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Create/View "
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "interview_completed",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Interview Completed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "applicant_rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Applicant Rating"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-03-04 12:38:34.878603",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Applicant Interview Round",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

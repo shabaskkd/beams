@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:budget_expense_type",
+ "creation": "2024-08-16 16:30:26.934256",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_2qa9",
+  "budget_expense_type",
+  "accounts",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_2qa9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "budget_expense_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Budget  Expense Type",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "accounts",
+   "fieldtype": "Table",
+   "label": "Accounts",
+   "options": "Accounts"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-10 14:54:55.322266",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Budget Expense Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

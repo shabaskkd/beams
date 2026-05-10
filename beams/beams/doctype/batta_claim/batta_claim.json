@@ -1,0 +1,398 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:BC-{YY}-{####}",
+ "creation": "2024-09-02 10:37:13.367643",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_twbt",
+  "amended_from",
+  "batta_type",
+  "expense_type",
+  "employee",
+  "employee_name",
+  "supplier",
+  "designation",
+  "company",
+  "bureau",
+  "is_delhi_bureau",
+  "purpose",
+  "column_break_lgjy",
+  "cost_centre",
+  "origin",
+  "destination",
+  "mode_of_travelling",
+  "from_bureau",
+  "is_budgeted",
+  "is_budget_exceeded",
+  "is_travelling_outside_kerala",
+  "is_overnight_stay",
+  "is_avail_room_rent",
+  "room_criteria",
+  "attach",
+  "trip_sheet",
+  "travel_request",
+  "hod_email",
+  "section_break_bkxb",
+  "room_rent_batta",
+  "batta_based_on",
+  "column_break_gbiv",
+  "daily_batta_with_overnight_stay",
+  "daily_batta_without_overnight_stay",
+  "column_break_jwtq",
+  "batta",
+  "ot_batta",
+  "section_break_osak",
+  "work_detail",
+  "section_break_ozsf",
+  "total_distance_travelled_km",
+  "column_break_fxzl",
+  "total_hours",
+  "section_break_nsff",
+  "total_daily_batta"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_twbt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Batta Claim",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "Internal",
+   "fieldname": "batta_type",
+   "fieldtype": "Select",
+   "label": "Batta Type",
+   "options": "Internal\nExternal",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.batta_type == \"Internal\"\n",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "mandatory_depends_on": "eval:doc.batta_type == 'Internal'",
+   "options": "Employee"
+  },
+  {
+   "depends_on": "eval:doc.batta_type == \"Internal\"",
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name ",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.batta_type !== 'External'",
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.batta_type == \"External\"\n",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "mandatory_depends_on": "eval:doc.batta_type == 'External'",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "destination",
+   "fieldtype": "Data",
+   "label": "Destination"
+  },
+  {
+   "fieldname": "column_break_lgjy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_bkxb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "batta_based_on",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Batta Based On",
+   "options": "Daily\nHours"
+  },
+  {
+   "fieldname": "batta",
+   "fieldtype": "Currency",
+   "label": "Batta",
+   "read_only_depends_on": "eval:doc.batta_type == \"Internal\""
+  },
+  {
+   "depends_on": "eval:doc.batta_type == \"External\"\n",
+   "description": "per hour",
+   "fieldname": "ot_batta",
+   "fieldtype": "Currency",
+   "label": "OT Batta"
+  },
+  {
+   "fieldname": "section_break_nsff",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_daily_batta",
+   "fieldtype": "Currency",
+   "label": "Total Batta",
+   "read_only": 1
+  },
+  {
+   "fieldname": "work_detail",
+   "fieldtype": "Table",
+   "label": "Work Detail",
+   "options": "Work Detail"
+  },
+  {
+   "fieldname": "column_break_gbiv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jwtq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_osak",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bureau",
+   "fieldtype": "Link",
+   "label": "Bureau",
+   "options": "Bureau"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fetch_from": "bureau.cost_center",
+   "fieldname": "cost_centre",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Small Text",
+   "label": "Purpose"
+  },
+  {
+   "depends_on": "eval: doc.batta_type == 'Internal'",
+   "fieldname": "mode_of_travelling",
+   "fieldtype": "Table MultiSelect",
+   "label": "Mode Of Travelling",
+   "options": "Mode of Travel Table"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.batta_type == 'Internal'",
+   "fieldname": "is_travelling_outside_kerala",
+   "fieldtype": "Check",
+   "label": " Is Travelling Outside Kerala"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.batta_type == 'Internal'",
+   "fieldname": "is_overnight_stay",
+   "fieldtype": "Check",
+   "label": "Is Overnight Stay"
+  },
+  {
+   "depends_on": "eval: (doc.batta_type == 'Internal' && doc.is_overnight_stay ==1);",
+   "fieldname": "room_criteria",
+   "fieldtype": "Table MultiSelect",
+   "label": "Room Criteria",
+   "options": "Room Criteria Table"
+  },
+  {
+   "fieldname": "origin",
+   "fieldtype": "Data",
+   "label": "Origin"
+  },
+  {
+   "depends_on": "eval:doc.batta_type == \"Internal\"",
+   "fieldname": "room_rent_batta",
+   "fieldtype": "Currency",
+   "label": "Room Rent Batta",
+   "precision": "2"
+  },
+  {
+   "depends_on": "is_overnight_stay",
+   "fieldname": "daily_batta_with_overnight_stay",
+   "fieldtype": "Currency",
+   "label": "Daily Batta With Overnight Stay",
+   "precision": "2"
+  },
+  {
+   "depends_on": "eval:doc.batta_type == \"Internal\" && !doc.is_overnight_stay",
+   "fieldname": "daily_batta_without_overnight_stay",
+   "fieldtype": "Currency",
+   "label": "Daily Batta Without Overnight Stay",
+   "precision": "2"
+  },
+  {
+   "fieldname": "attach",
+   "fieldtype": "Attach",
+   "label": "Attach"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: (doc.batta_type == 'Internal' && doc.is_overnight_stay ==1);",
+   "fieldname": "is_avail_room_rent",
+   "fieldtype": "Check",
+   "label": "Is Avail Room Rent"
+  },
+  {
+   "fieldname": "section_break_ozsf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_fxzl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_distance_travelled_km",
+   "fieldtype": "Float",
+   "label": "Total Distance Travelled(KM)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_delhi_bureau",
+   "fieldtype": "Check",
+   "label": "Is Delhi Bureau"
+  },
+  {
+   "depends_on": "eval:doc.workflow_state==\"Pending Approval\"",
+   "fieldname": "expense_type",
+   "fieldtype": "Select",
+   "label": "Expense Type",
+   "mandatory_depends_on": "eval:doc.workflow_state==\"Pending Approval\"",
+   "options": "\nDirect\nIndirect",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "trip_sheet",
+   "fieldtype": "Link",
+   "label": "Trip Sheet",
+   "options": "Trip Sheet",
+   "search_index": 1
+  },
+  {
+   "fieldname": "travel_request",
+   "fieldtype": "Link",
+   "label": "Travel Request",
+   "options": "Employee Travel Request",
+   "search_index": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_budgeted",
+   "fieldtype": "Check",
+   "label": "Is Budgeted"
+  },
+  {
+   "default": "0",
+   "fieldname": "from_bureau",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "From Bureau"
+  },
+  {
+   "fieldname": "hod_email",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "HOD Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.is_budgeted == 1",
+   "fieldname": "is_budget_exceeded",
+   "fieldtype": "Check",
+   "label": " Is Budget Exceeded"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "batta_claim_reference"
+  }
+ ],
+ "modified": "2026-02-05 14:16:38.084292",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Batta Claim",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Expense Approver",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Expense Approver",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

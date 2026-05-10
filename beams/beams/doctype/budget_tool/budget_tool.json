@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 1,
+ "creation": "2025-01-30 21:01:16.925533",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "budget",
+  "department",
+  "column_break_vmmp",
+  "status",
+  "division",
+  "has_unsaved_changes",
+  "is_editable",
+  "section_break_ybxp",
+  "budget_html",
+  "add_row"
+ ],
+ "fields": [
+  {
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "label": "Budget",
+   "options": "Budget"
+  },
+  {
+   "fieldname": "section_break_ybxp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "budget_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_unsaved_changes",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Has Unsaved Changes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vmmp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.budget!=null && doc.is_editable==1",
+   "fieldname": "add_row",
+   "fieldtype": "Button",
+   "label": "Add Row"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_editable",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Editable",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "budget.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "budget.division",
+   "fieldname": "division",
+   "fieldtype": "Link",
+   "label": "Division",
+   "options": "Division",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "budget.workflow_state",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-02-03 11:57:58.907241",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Budget Tool",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

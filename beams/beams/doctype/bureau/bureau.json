@@ -1,0 +1,197 @@
+{
+    "actions": [],
+    "allow_copy": 1,
+    "allow_rename": 1,
+    "autoname": "field:bureau_name",
+    "creation": "2026-05-02 16:53:51.200293",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "bureau_name",
+        "cost_center",
+        "amended_from",
+        "mode_of_payment",
+        "bureau_head",
+        "company",
+        "location",
+        "is_parent_bureau",
+        "regional_bureau",
+        "regional_bureau_head",
+        "fuel_card",
+        "column_break_kkti",
+        "bata_cost_head",
+        "bata_account",
+        "fuel_cost_head",
+        "fuel_account",
+        "travel_cost_head",
+        "travel_account",
+        "repair_cost_head",
+        "repair_account"
+    ],
+    "fields": [
+        {
+            "fieldname": "bureau_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Bureau Name",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "fieldname": "cost_center",
+            "fieldtype": "Link",
+            "label": "Cost Center",
+            "options": "Cost Center"
+        },
+        {
+            "fieldname": "amended_from",
+            "fieldtype": "Link",
+            "label": "Amended From",
+            "no_copy": 1,
+            "options": "Bureau",
+            "print_hide": 1,
+            "read_only": 1,
+            "search_index": 1
+        },
+        {
+            "fieldname": "company",
+            "fieldtype": "Link",
+            "label": "Company",
+            "options": "Company"
+        },
+        {
+            "fieldname": "location",
+            "fieldtype": "Link",
+            "label": "Location ",
+            "options": "Location"
+        },
+        {
+            "fieldname": "mode_of_payment",
+            "fieldtype": "Link",
+            "label": "Mode of Payment ",
+            "options": "Mode of Payment"
+        },
+        {
+            "depends_on": "eval:!doc.is_parent_bureau",
+            "fieldname": "regional_bureau",
+            "fieldtype": "Link",
+            "label": "Parent Bureau",
+            "options": "Bureau"
+        },
+        {
+            "default": "0",
+            "fieldname": "is_parent_bureau",
+            "fieldtype": "Check",
+            "label": "Is Parent Bureau"
+        },
+        {
+            "fieldname": "regional_bureau_head",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Regional Bureau Head",
+            "options": "Employee"
+        },
+        {
+            "fieldname": "bureau_head",
+            "fieldtype": "Link",
+            "label": "Bureau Head",
+            "options": "Employee"
+        },
+        {
+            "fieldname": "fuel_card",
+            "fieldtype": "Link",
+            "label": "Fuel Card",
+            "options": "Fuel Card"
+        },
+        {
+            "fieldname": "column_break_kkti",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "bata_cost_head",
+            "fieldtype": "Link",
+            "label": "Bata Cost Head",
+            "options": "Cost Head",
+            "insert_after": "column_break_kkti"
+        },
+        {
+            "fieldname": "bata_account",
+            "fieldtype": "Link",
+            "label": "Bata Account",
+            "options": "Account",
+            "insert_after": "bata_cost_head",
+            "read_only": 1
+        },
+        {
+            "fieldname": "fuel_cost_head",
+            "fieldtype": "Link",
+            "label": "Fuel Cost Head",
+            "options": "Cost Head",
+            "insert_after": "bata_account"
+        },
+        {
+            "fieldname": "fuel_account",
+            "fieldtype": "Link",
+            "label": "Fuel Account",
+            "options": "Account",
+            "insert_after": "fuel_cost_head",
+            "read_only": 1
+        },
+        {
+            "fieldname": "travel_cost_head",
+            "fieldtype": "Link",
+            "label": "Travel Cost Head",
+            "options": "Cost Head",
+            "insert_after": "fuel_account"
+        },
+        {
+            "fieldname": "travel_account",
+            "fieldtype": "Link",
+            "label": " Travel Account",
+            "options": "Account",
+            "insert_after": "travel_cost_head",
+            "read_only": 1
+        },
+        {
+            "fieldname": "repair_cost_head",
+            "fieldtype": "Link",
+            "label": "Repair Cost Head",
+            "options": "Cost Head",
+            "insert_after": "travel_account"
+        },
+        {
+            "fieldname": "repair_account",
+            "fieldtype": "Link",
+            "label": "Repair Account",
+            "options": "Account",
+            "insert_after": "repair_cost_head",
+            "read_only": 1
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2026-05-05 14:58:06.887421",
+    "modified_by": "Administrator",
+    "module": "BEAMS",
+    "name": "Bureau",
+    "naming_rule": "By fieldname",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "row_format": "Dynamic",
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}

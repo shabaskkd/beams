@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{revenue_category} - {abbreviation}",
+ "creation": "2025-02-17 14:10:03.498118",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "abbreviation",
+  "column_break_ofsa",
+  "revenue_category",
+  "section_break_ybn1",
+  "revenue_template_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ybn1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "revenue_template_item",
+   "fieldtype": "Table",
+   "label": "Revenue Template Item",
+   "options": "Revenue Template Item"
+  },
+  {
+   "fieldname": "revenue_category",
+   "fieldtype": "Link",
+   "label": "Revenue Category",
+   "options": "Revenue Category",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "company.abbr",
+   "fieldname": "abbreviation",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbreviation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ofsa",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-07 14:45:56.321830",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Revenue Template",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

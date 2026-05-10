@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-19 10:36:36.024839",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "albatross_service_item",
+  "gst_settings_section",
+  "in_state_tax_category",
+  "column_break_natc",
+  "out_state_tax_category",
+  "section_break_ntun",
+  "tax_templates"
+ ],
+ "fields": [
+  {
+   "fieldname": "albatross_service_item",
+   "fieldtype": "Link",
+   "label": "Albatross Service Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "in_state_tax_category",
+   "fieldtype": "Link",
+   "label": "In State Tax Category",
+   "options": "Tax Category"
+  },
+  {
+   "fieldname": "out_state_tax_category",
+   "fieldtype": "Link",
+   "label": "Out State Tax Category",
+   "options": "Tax Category"
+  },
+  {
+   "fieldname": "gst_settings_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "GST Settings"
+  },
+  {
+   "fieldname": "column_break_natc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ntun",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tax_templates",
+   "fieldtype": "Table",
+   "label": "Tax Templates",
+   "options": "Albatross GST Mapping"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-11-01 13:10:17.290625",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Albatross Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

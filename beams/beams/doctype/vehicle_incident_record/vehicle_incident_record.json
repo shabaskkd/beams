@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:VIR-{YY}-{####}",
+ "creation": "2025-01-22 15:28:08.478131",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ue5d",
+  "trip_sheet",
+  "driver",
+  "driver_name",
+  "vehicle",
+  "column_break_hwrj",
+  "offense_type",
+  "trip_start_date",
+  "trip_end_date",
+  "column_break_trzy",
+  "posting_date",
+  "offense_date_and_time",
+  "amended_from",
+  "section_break_ezbs",
+  "vehicle_incident_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ue5d",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vehicle Incident Record",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "trip_sheet",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Trip Sheet",
+   "options": "Trip Sheet",
+   "reqd": 1
+  },
+  {
+   "fieldname": "offense_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Offense Type ",
+   "options": "Offense Type",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date ",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "offense_date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Offense Date and Time ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hwrj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "trip_sheet.driver",
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Driver",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "driver.full_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "trip_sheet.starting_date_and_time",
+   "fieldname": "trip_start_date",
+   "fieldtype": "Date",
+   "label": "Trip Start Date"
+  },
+  {
+   "fetch_from": "trip_sheet.ending_date_and_time",
+   "fieldname": "trip_end_date",
+   "fieldtype": "Date",
+   "label": "Trip End Date"
+  },
+  {
+   "fieldname": "section_break_ezbs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "vehicle_incident_details",
+   "fieldtype": "Table",
+   "label": "Vehicle Incident Details",
+   "options": "Vehicle Incident Details"
+  },
+  {
+   "fieldname": "column_break_trzy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "trip_sheet.vehicle",
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "Vehicle",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-08-21 16:14:21.982949",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Vehicle Incident Record",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

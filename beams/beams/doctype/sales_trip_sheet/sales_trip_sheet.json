@@ -1,0 +1,297 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-30 12:52:07.745051",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_g3ki",
+  "column_break_yrpr",
+  "amended_from",
+  "section_break_qhgx",
+  "is_budgeted",
+  "is_budget_exceed",
+  "cost_head",
+  "employee",
+  "customer_type",
+  "customer",
+  "lead",
+  "starting_date_and_time",
+  "ending_date_and_time",
+  "total_hours",
+  "account",
+  "column_break_nkaa",
+  "company",
+  "travel_type",
+  "km_charge",
+  "opportunity",
+  "starting_km",
+  "ending_km",
+  "total_distance",
+  "departure_location",
+  "destination_location",
+  "section_break_hezw",
+  "is_actual_bata",
+  "is_overnight_stay",
+  "is_travelling_outside_kerala",
+  "daily_batta_with_overnight_stay",
+  "daily_batta_without_overnight_stay",
+  "column_break_djjq",
+  "bata",
+  "total_km_charge",
+  "column_break_rcme",
+  "breakfast",
+  "lunch",
+  "dinner",
+  "total_food_allowance"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_g3ki",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_yrpr",
+   "fieldtype": "Column Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sales Trip Sheet",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_qhgx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_budgeted",
+   "fieldtype": "Check",
+   "label": "Is Budgeted"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_budget_exceed",
+   "fieldtype": "Check",
+   "label": "Is Budget Exceed"
+  },
+  {
+   "depends_on": "eval:doc.is_budgeted==1",
+   "fieldname": "cost_head",
+   "fieldtype": "Link",
+   "label": "Cost Head",
+   "options": "Cost Head"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "customer_type",
+   "fieldtype": "Select",
+   "label": "Customer Type",
+   "options": "Client\nAgency\nLead"
+  },
+  {
+   "depends_on": "eval:doc.customer_type=='Client' || doc.customer_type=='Agency'",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "depends_on": "eval:doc.customer_type=='Lead'",
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Lead"
+  },
+  {
+   "fieldname": "starting_date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Starting Date and Time"
+  },
+  {
+   "fieldname": "ending_date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Ending Date and Time "
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours",
+   "read_only": 1
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_nkaa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "travel_type",
+   "fieldtype": "Select",
+   "label": "Travel Type",
+   "options": "CAR\nBIKE"
+  },
+  {
+   "fieldname": "km_charge",
+   "fieldtype": "Float",
+   "label": "K.M Charge",
+   "read_only": 1
+  },
+  {
+   "fieldname": "opportunity",
+   "fieldtype": "Link",
+   "label": "Opportunity",
+   "options": "Opportunity"
+  },
+  {
+   "fieldname": "starting_km",
+   "fieldtype": "Float",
+   "label": "Starting K.M"
+  },
+  {
+   "fieldname": "ending_km",
+   "fieldtype": "Float",
+   "label": "Ending K.M"
+  },
+  {
+   "fieldname": "total_distance",
+   "fieldtype": "Float",
+   "label": "Total Distance"
+  },
+  {
+   "fieldname": "departure_location",
+   "fieldtype": "Link",
+   "label": "Departure Location",
+   "options": "Location"
+  },
+  {
+   "fieldname": "destination_location",
+   "fieldtype": "Link",
+   "label": "Destination Location",
+   "options": "Location"
+  },
+  {
+   "fieldname": "section_break_hezw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_actual_bata",
+   "fieldtype": "Check",
+   "label": "Is Actual Bata"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_overnight_stay",
+   "fieldtype": "Check",
+   "label": "Is Overnight Stay"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_travelling_outside_kerala",
+   "fieldtype": "Check",
+   "label": "Is Travelling Outside Kerala"
+  },
+  {
+   "fieldname": "daily_batta_with_overnight_stay",
+   "fieldtype": "Currency",
+   "label": "Daily Batta With Overnight Stay"
+  },
+  {
+   "fieldname": "daily_batta_without_overnight_stay",
+   "fieldtype": "Currency",
+   "label": "Daily Batta Without Overnight Stay"
+  },
+  {
+   "fieldname": "column_break_djjq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bata",
+   "fieldtype": "Currency",
+   "label": "Bata"
+  },
+  {
+   "fieldname": "total_km_charge",
+   "fieldtype": "Float",
+   "label": "Total K.M Charge",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rcme",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "breakfast",
+   "fieldtype": "Currency",
+   "label": "Breakfast"
+  },
+  {
+   "fieldname": "lunch",
+   "fieldtype": "Currency",
+   "label": "Lunch"
+  },
+  {
+   "fieldname": "dinner",
+   "fieldtype": "Currency",
+   "label": "dinner"
+  },
+  {
+   "fieldname": "total_food_allowance",
+   "fieldtype": "Currency",
+   "label": "Total Food Allowance"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-30 13:04:08.998354",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Sales Trip Sheet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,115 @@
+# Copyright (c) 2026, shabas and contributors
+# For license information, please see license.txt
+
+import frappe
+from frappe.model.document import Document
+from datetime import datetime
+from frappe.desk.form.assign_to import add as add_assign
+from frappe.utils.user import get_users_with_role
+
+class StringerBill(Document):
+	def on_submit(self):
+		if self.workflow_state == 'Approved':
+			self.create_purchase_invoice_from_stringer_bill()
+
+	def on_update(self):
+		self.notify_regional_bureau_head()
+
+	def create_purchase_invoice_from_stringer_bill(self):
+		"""
+		Creation of Purchase Invoice On The Approval Of the Stringer Bill.
+		"""
+		# Fetch the item code from the Stringer Type
+		item_code = frappe.db.get_single_value('Beams Accounts Settings', 'stringer_service_item')
+
+		# Create a new Purchase Invoice
+		purchase_invoice = frappe.new_doc('Purchase Invoice')
+		purchase_invoice.stringer_bill_reference = self.name
+		purchase_invoice.supplier = self.supplier
+		purchase_invoice.invoice_type = 'Stringer Bill'
+		purchase_invoice.posting_date = frappe.utils.nowdate()
+		purchase_invoice.bureau = self.bureau
+		purchase_invoice.cost_center = self.cost_center
+
+		# Populate Child Table
+		purchase_invoice.append('items', {
+			'item_code': item_code,
+			'qty': 1,
+			'rate': self.stringer_amount
+		})
+
+		# Insert and submit the document
+		purchase_invoice.insert()
+		purchase_invoice.save()
+
+		# Confirm success
+		frappe.msgprint(f"Purchase Invoice {purchase_invoice.name} created successfully with Stringer Bill reference {self.name}.", alert=True, indicator="green")
+
+	def after_insert(self):
+		self.create_todo_on_creation_for_stringer_bill()
+
+	def create_todo_on_creation_for_stringer_bill(self):
+		"""
+		Create a ToDo for Accounts Manager when a new Stringer Bill is created.
+		"""
+		users = get_users_with_role("Accounts Manager")
+		if users:
+			description = f"New Stringer Bill Created for {self.supplier}.<br>Please Review and Update Details or Take Necessary Actions."
+			add_assign({
+				"assign_to": users,
+				"doctype": "Stringer Bill",
+				"name": self.name,
+				"description": description
+			})
+
+	def notify_regional_bureau_head(self):
+		"""
+		Send bell notification to Regional Bureau Head
+		when Stringer Bill reaches Pending Bureau Head Approval
+		"""
+		previous_doc = self.get_doc_before_save()
+
+		if not previous_doc:
+			return
+
+		if (
+			previous_doc.workflow_state != "Pending Bureau Head Approval"
+			and self.workflow_state == "Pending Bureau Head Approval"
+		):
+
+			if not self.bureau:
+				return
+
+			emp = frappe.db.get_value(
+				"Bureau",
+				self.bureau,
+				"regional_bureau_head"
+			)
+
+			if not emp:
+				return
+
+			user = frappe.db.get_value("Employee", emp, "user_id")
+
+			if not user:
+				return
+
+			if frappe.db.exists(
+				"Notification Log",
+				{
+					"document_type": "Stringer Bill",
+					"document_name": self.name,
+					"for_user": user,
+					"subject": f"Stringer Bill {self.name} is pending your approval."
+				}
+			):
+				return
+
+			frappe.get_doc({
+				"doctype": "Notification Log",
+				"subject": f"Stringer Bill {self.name} is pending your approval.",
+				"for_user": user,
+				"document_type": "Stringer Bill",
+				"document_name": self.name
+			}).insert(ignore_permissions=True)
+

@@ -1,0 +1,233 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-21 11:50:04.743208",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "adhoc_budget_threshold",
+  "default_sales_invoice_print_format",
+  "default_trip_sheet_service_item",
+  "column_break_eqou",
+  "equalize_purchase_and_quotation_amounts",
+  "single_sales_order",
+  "purchase_threshold",
+  "tab_break_4hid",
+  "default_working_hours",
+  "batta_claim_service_item",
+  "batta_payable_account",
+  "column_break_jaqb",
+  "batta_expense_account",
+  "default_indirect_expense_account",
+  "naming_rule_tab",
+  "beams_naming_rule",
+  "substitute_booking_tab",
+  "default_credit_account",
+  "default_debit_account",
+  "stringer_settings_tab",
+  "stringer_service_item",
+  "column_break_ixlf",
+  "bureau_settings_tab",
+  "batta_expense_item",
+  "fuel_expense_item",
+  "fuel_card_account",
+  "column_break_jkfg",
+  "rent_expense_item",
+  "batta_ot_expense_item",
+  "advance_account"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "equalize_purchase_and_quotation_amounts",
+   "fieldtype": "Check",
+   "label": "Equalize Purchase and Quotation Amounts"
+  },
+  {
+   "description": "Adhoc Budget Revenue Expectation Threshold",
+   "fieldname": "adhoc_budget_threshold",
+   "fieldtype": "Float",
+   "label": "Adhoc Budget Threshold"
+  },
+  {
+   "fieldname": "tab_break_4hid",
+   "fieldtype": "Tab Break",
+   "label": "Batta Settings"
+  },
+  {
+   "fieldname": "default_working_hours",
+   "fieldtype": "Float",
+   "label": "Default Working Hours"
+  },
+  {
+   "fieldname": "naming_rule_tab",
+   "fieldtype": "Tab Break",
+   "label": "Naming Rule"
+  },
+  {
+   "fieldname": "beams_naming_rule",
+   "fieldtype": "Table",
+   "label": "Beams Naming Rule",
+   "options": "Beams Naming Rule"
+  },
+  {
+   "fieldname": "batta_claim_service_item",
+   "fieldtype": "Link",
+   "label": "Batta Claim Service Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "batta_payable_account",
+   "fieldtype": "Link",
+   "label": "Batta Payable Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "substitute_booking_tab",
+   "fieldtype": "Tab Break",
+   "label": "Substitute Booking"
+  },
+  {
+   "fieldname": "default_credit_account",
+   "fieldtype": "Link",
+   "label": " Default Credit Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "default_debit_account",
+   "fieldtype": "Link",
+   "label": "Default Debit Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "batta_expense_account",
+   "fieldtype": "Link",
+   "label": "Default Direct Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "default_sales_invoice_print_format",
+   "fieldtype": "Link",
+   "label": "Default Sales Invoice Print Format",
+   "options": "Print Format"
+  },
+  {
+   "fieldname": "stringer_service_item",
+   "fieldtype": "Link",
+   "label": "Stringer Service Item",
+   "options": "Item"
+  },
+  {
+   "default": "0",
+   "description": "Only a single Sales Order can be created from a Quotation.",
+   "fieldname": "single_sales_order",
+   "fieldtype": "Check",
+   "label": "Single Sales Order"
+  },
+  {
+   "fieldname": "stringer_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Stringer Settings"
+  },
+  {
+   "fieldname": "column_break_eqou",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jaqb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Amount limit used to control Purchase Order approvals",
+   "fieldname": "purchase_threshold",
+   "fieldtype": "Float",
+   "label": "Purchase Threshold "
+  },
+  {
+   "fieldname": "column_break_ixlf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_trip_sheet_service_item",
+   "fieldtype": "Link",
+   "label": "Default Trip Sheet Service Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_indirect_expense_account",
+   "fieldtype": "Link",
+   "label": "Default Indirect Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "bureau_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Bureau Trip Sheet Settings"
+  },
+  {
+   "fieldname": "batta_expense_item",
+   "fieldtype": "Link",
+   "label": "Batta Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "fuel_expense_item",
+   "fieldtype": "Link",
+   "label": "Fuel Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_jkfg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rent_expense_item",
+   "fieldtype": "Link",
+   "label": "Rent Expense Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "batta_ot_expense_item",
+   "fieldtype": "Link",
+   "label": "OT Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "fuel_card_account",
+   "fieldtype": "Link",
+   "label": "Fuel Card / Fuel Log Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "advance_account",
+   "fieldtype": "Link",
+   "label": "Advance Account",
+   "options": "Account"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-03-17 14:51:14.096058",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Beams Accounts Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

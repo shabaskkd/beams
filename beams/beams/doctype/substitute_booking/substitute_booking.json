@@ -1,0 +1,273 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SUB-{YY}-{####}",
+ "creation": "2024-09-12 16:11:41.683569",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_l0sx",
+  "substituting_for",
+  "employee_name",
+  "column_break_dxgp",
+  "stringer_type",
+  "designation",
+  "section_break_wusz",
+  "substituted_by",
+  "phone_number",
+  "column_break_unny",
+  "email_id",
+  "is_budgeted",
+  "is_budget_exceeded",
+  "section_break_lftz",
+  "column_break_rbcg",
+  "bureau",
+  "cost_center",
+  "column_break_ekck",
+  "posting_date",
+  "daily_wage",
+  "section_break_igie",
+  "substitution_bill_date",
+  "section_break_hhic",
+  "no_of_days",
+  "column_break_pxuk",
+  "total_wage",
+  "section_break_yzva",
+  "expense_account",
+  "column_break_sbia",
+  "mode_of_payment",
+  "column_break_rqau",
+  "is_paid",
+  "paid_amount",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "substituting_for",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Substituting For",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "substituting_for.stringer_type",
+   "fieldname": "stringer_type",
+   "fieldtype": "Link",
+   "label": "Stringer Type",
+   "options": "Stringer Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "substituted_by",
+   "fieldtype": "Data",
+   "label": "Substituted By",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id"
+  },
+  {
+   "fieldname": "bureau",
+   "fieldtype": "Link",
+   "label": "Bureau",
+   "options": "Bureau"
+  },
+  {
+   "fetch_from": "bureau.cost_center",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "daily_wage",
+   "fieldtype": "Currency",
+   "label": "Daily Wage",
+   "reqd": 1
+  },
+  {
+   "fieldname": "no_of_days",
+   "fieldtype": "Int",
+   "label": "No of Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_wage",
+   "fieldtype": "Currency",
+   "label": "Total Wage",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "column_break_rbcg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_igie",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "substitution_bill_date",
+   "fieldtype": "Table",
+   "label": "Substitution Bill Date",
+   "options": "Substitution Bill Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_l0sx",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "section_break_lftz",
+   "fieldtype": "Section Break",
+   "label": "Administrative Details"
+  },
+  {
+   "fetch_from": "substituting_for.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "substituting_for.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_wusz",
+   "fieldtype": "Section Break",
+   "label": "Substitute Details"
+  },
+  {
+   "fieldname": "section_break_hhic",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_pxuk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dxgp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ekck",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_unny",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "label": "Expense Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_yzva",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_sbia",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "column_break_rqau",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Substitute Booking",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_paid",
+   "fieldtype": "Check",
+   "label": "Is Paid",
+   "mandatory_depends_on": "eval:doc.workflow_state === \"Pending Approval\";"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_budgeted",
+   "fieldtype": "Check",
+   "label": "Is Budgeted"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.is_budgeted == 1",
+   "fieldname": "is_budget_exceeded",
+   "fieldtype": "Check",
+   "label": "Is Budget Exceeded"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "substitute_booking_reference"
+  }
+ ],
+ "modified": "2025-12-03 14:13:49.862015",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Substitute Booking",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

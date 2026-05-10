@@ -1,0 +1,191 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "LER-.#####",
+ "creation": "2024-10-14 14:11:06.356872",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "applicant_details_section",
+  "job_applicant",
+  "job_applicant_name",
+  "designation",
+  "department",
+  "enquiry_officer",
+  "enquiry_officer_name",
+  "column_break_xtgz",
+  "status",
+  "expected_completion_date",
+  "enquiry_start_date",
+  "enquiry_completion_date",
+  "enquiry_details",
+  "enquiry_report",
+  "remarks",
+  "amended_from",
+  "information_collected_by_section",
+  "information_given_by",
+  "information_given_by_designation",
+  "column_break_unwc"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_applicant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Job Applicant",
+   "options": "Job Applicant",
+   "reqd": 1
+  },
+  {
+   "fieldname": "enquiry_report",
+   "fieldtype": "Table",
+   "label": "Enquiry Report",
+   "options": "Local Enquiry Checklist"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fetch_from": "job_applicant.applicant_name",
+   "fieldname": "job_applicant_name",
+   "fieldtype": "Data",
+   "label": "Job Applicant Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_applicant.designation",
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_applicant.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nOngoing\nHold\nCompleted\nOverdue",
+   "read_only": 1
+  },
+  {
+   "fieldname": "information_given_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Person Name"
+  },
+  {
+   "fieldname": "information_given_by_designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designation"
+  },
+  {
+   "fieldname": "column_break_xtgz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "enquiry_start_date",
+   "fieldtype": "Date",
+   "label": "Enquiry Start Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "enquiry_completion_date",
+   "fieldtype": "Date",
+   "label": " Enquiry Completion Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expected_completion_date",
+   "fieldtype": "Date",
+   "label": "Expected Completion Date ",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.workflow_state != 'Draft';",
+   "fieldname": "enquiry_officer",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Enquiry Officer",
+   "mandatory_depends_on": "eval: doc.workflow_state != 'Draft';",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Local Enquiry Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "applicant_details_section",
+   "fieldtype": "Section Break",
+   "label": "Applicant Details"
+  },
+  {
+   "depends_on": "eval: !in_list([\"Draft\", \"Assigned to Admin\"], doc.workflow_state)",
+   "fieldname": "information_collected_by_section",
+   "fieldtype": "Section Break",
+   "label": "Information Collected From"
+  },
+  {
+   "fieldname": "column_break_unwc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: !in_list([\"Draft\", \"Assigned to Admin\"], doc.workflow_state)",
+   "fieldname": "enquiry_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval: doc.workflow_state != 'Draft';",
+   "fetch_from": "enquiry_officer.employee_name",
+   "fieldname": "enquiry_officer_name",
+   "fieldtype": "Data",
+   "label": "Enquiry Officer Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-18 09:16:31.544974",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Local Enquiry Report",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "job_applicant_name"
+}

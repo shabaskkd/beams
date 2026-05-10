@@ -1,0 +1,391 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-02 12:43:07.245206",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "default_local_enquiry_duration",
+  "absence_reminder_duration",
+  "column_break_lmqd",
+  "permanent_employment_type",
+  "absence_reminder_template",
+  "column_break_dskf",
+  "enable_absence_reminders",
+  "section_break_pdeh",
+  "resume_size",
+  "section_break_mafr",
+  "leave_application_template",
+  "column_break_zilk",
+  "leave_application_reminder_duration",
+  "notification_settings_tab",
+  "notification_to_admin_department_to_create_id_card_section",
+  "notification_to_admin",
+  "admin_hod",
+  "column_break_gvvx",
+  "notification_to_it",
+  "it_hod",
+  "tab_3_tab",
+  "maternity_leave_type",
+  "column_break_pjdi",
+  "compensatory_leave_type",
+  "section_break_kuat",
+  "leave_application_hod_approval_template",
+  "shift_settings_tab",
+  "shift_publisher_role",
+  "shift_publication_day",
+  "enable_shift_notification",
+  "column_break_vowd",
+  "send_shift_creation_reminder",
+  "shift_creation_reminder_template",
+  "appraisal_settings_tab",
+  "enable_appraisal_reminder",
+  "appraisal_creation_period",
+  "appraisal_reminder_template",
+  "column_break_dwmr",
+  "assessment_reminder_template",
+  "appraisal_consent_terms",
+  "section_break_egls",
+  "appraisal_initiative_days",
+  "hr_notification_days_before_deadline",
+  "days_for_next_appraisal_creation",
+  "column_break_emmi",
+  "joining_based_appraisal_notification_template",
+  "re_deadline_hr_notification_template",
+  "appraisal_creation_escalation_template",
+  "ceo_appraisal_alert_template",
+  "appraisal_start_employee_notification_template",
+  "tab_6_tab",
+  "attendance_request_submission_limit_days"
+ ],
+ "fields": [
+  {
+   "description": "In Days",
+   "fieldname": "default_local_enquiry_duration",
+   "fieldtype": "Int",
+   "label": "Default Local Enquiry Duration"
+  },
+  {
+   "fieldname": "notification_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Notification Settings"
+  },
+  {
+   "fieldname": "notification_to_admin_department_to_create_id_card_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Notification Message to Admin Department to Create ID Card.\n\nHelp:\nBased on Job Applicant you can apply jinja formatting like {{ doc.name }} ",
+   "fieldname": "notification_to_admin",
+   "fieldtype": "Small Text",
+   "label": "Admin Notification Message"
+  },
+  {
+   "description": "Notification Message to IT Department to Create Login Credentials. Help:\nBased on Job Applicant you can apply jinja formatting like {{ doc.name }} ",
+   "fieldname": "notification_to_it",
+   "fieldtype": "Small Text",
+   "label": "IT Notification Message"
+  },
+  {
+   "fieldname": "admin_hod",
+   "fieldtype": "Link",
+   "label": "Responsible Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "it_hod",
+   "fieldtype": "Link",
+   "label": "Responsible Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_gvvx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Leave Type for Double Shift Compensatory Leave",
+   "fieldname": "tab_3_tab",
+   "fieldtype": "Tab Break",
+   "label": " Leave Settings"
+  },
+  {
+   "description": "Leave Type for Double Shift Compensatory Leave",
+   "fieldname": "compensatory_leave_type",
+   "fieldtype": "Link",
+   "label": "Compensatory Leave Type",
+   "options": "Leave Type"
+  },
+  {
+   "fieldname": "column_break_pjdi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maternity_leave_type",
+   "fieldtype": "Link",
+   "label": "Maternity Leave Type",
+   "options": "Leave Type"
+  },
+  {
+   "fieldname": "shift_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Shift Settings"
+  },
+  {
+   "fieldname": "shift_publisher_role",
+   "fieldtype": "Link",
+   "label": "Shift Publisher Role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "shift_publication_day",
+   "fieldtype": "Select",
+   "label": "Shift Publication Day ",
+   "options": "\nSunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday"
+  },
+  {
+   "description": "Days in advance to send shift scheduling reminders.",
+   "fieldname": "send_shift_creation_reminder",
+   "fieldtype": "Int",
+   "label": "Send Shift Creation Reminder"
+  },
+  {
+   "fieldname": "shift_creation_reminder_template",
+   "fieldtype": "Link",
+   "label": "Shift Creation Reminder Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "column_break_vowd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_shift_notification",
+   "fieldtype": "Check",
+   "label": "Enable Shift Notification"
+  },
+  {
+   "description": "The timeframe in which the appraisal should be sent.",
+   "fieldname": "appraisal_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Appraisal Settings"
+  },
+  {
+   "depends_on": "eval:doc.enable_appraisal_reminder;",
+   "fieldname": "appraisal_creation_period",
+   "fieldtype": "Int",
+   "label": " Appraisal Creation Period"
+  },
+  {
+   "depends_on": "eval:doc.enable_appraisal_reminder;",
+   "fieldname": "appraisal_reminder_template",
+   "fieldtype": "Link",
+   "label": "Appraisal reminder Template",
+   "options": "Email Template"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_appraisal_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Appraisal Reminder"
+  },
+  {
+   "description": "Default Employment Type ",
+   "fieldname": "permanent_employment_type",
+   "fieldtype": "Link",
+   "label": "Permanent Employment Type",
+   "options": "Employment Type"
+  },
+  {
+   "fieldname": "column_break_lmqd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.enable_absence_reminders == 1",
+   "description": "Notify Reporting Manager after days of Absence without a Leave Application",
+   "fieldname": "absence_reminder_duration",
+   "fieldtype": "Int",
+   "label": "Absence Reminder Duration"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_absence_reminders",
+   "fieldtype": "Check",
+   "label": "Absence Reminders"
+  },
+  {
+   "depends_on": "eval:doc.enable_absence_reminders == 1",
+   "description": "Default Template for Absence Notification to the Reporting Manager",
+   "fieldname": "absence_reminder_template",
+   "fieldtype": "Link",
+   "label": "Absence Reminder Template",
+   "options": "Email Template"
+  },
+  {
+   "depends_on": "eval:doc.enable_absence_reminders == 1",
+   "description": "Notify  Employee after days of Absence without a Leave Application",
+   "fieldname": "leave_application_reminder_duration",
+   "fieldtype": "Int",
+   "label": "Leave Application Reminder Duration"
+  },
+  {
+   "depends_on": "eval:doc.enable_absence_reminders == 1",
+   "description": " Default Template for Absence Notification to the Employee",
+   "fieldname": "leave_application_template",
+   "fieldtype": "Link",
+   "label": "Leave Application Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "section_break_mafr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_zilk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dskf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dwmr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assessment_reminder_template",
+   "fieldtype": "Link",
+   "label": "Assessment Reminder Template ",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "tab_6_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attendance Settings"
+  },
+  {
+   "fieldname": "attendance_request_submission_limit_days",
+   "fieldtype": "Int",
+   "label": "Attendance Request Submission Limit (Days)"
+  },
+  {
+   "description": "Job portal resume size in kb",
+   "fieldname": "resume_size",
+   "fieldtype": "Float",
+   "label": "Maximum Size of Resume File ",
+   "precision": "3"
+  },
+  {
+   "fieldname": "section_break_pdeh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_kuat",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Template for notifying the Head of Department when a Leave Application requires their approval",
+   "fieldname": "leave_application_hod_approval_template",
+   "fieldtype": "Link",
+   "label": "Leave Application HOD Approval Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "section_break_egls",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": " Number of days from joining date to create appraisal",
+   "fieldname": "appraisal_initiative_days",
+   "fieldtype": "Int",
+   "label": "Appraisal Initiative Days"
+  },
+  {
+   "description": " How many days before deadline to notify HR",
+   "fieldname": "hr_notification_days_before_deadline",
+   "fieldtype": "Int",
+   "label": "HR Notification Days Before Deadline"
+  },
+  {
+   "description": "Days from which the next appraisal should be created",
+   "fieldname": "days_for_next_appraisal_creation",
+   "fieldtype": "Int",
+   "label": "Days for Next Appraisal Creation"
+  },
+  {
+   "fieldname": "column_break_emmi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Sent to HR after employee joining, instructing to create appraisal within specified days",
+   "fieldname": "joining_based_appraisal_notification_template",
+   "fieldtype": "Link",
+   "label": "Joining Based Appraisal Notification Template",
+   "options": "Email Template"
+  },
+  {
+   "description": "Sent to HR a few days before appraisal deadline as a reminder",
+   "fieldname": "re_deadline_hr_notification_template",
+   "fieldtype": "Link",
+   "label": "Pre-Deadline HR Notification Template",
+   "options": "Email Template"
+  },
+  {
+   "description": "Sent to employee when appraisal process begins",
+   "fieldname": "appraisal_start_employee_notification_template",
+   "fieldtype": "Link",
+   "label": "Appraisal Start Employee Notification Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "appraisal_creation_escalation_template",
+   "fieldtype": "Link",
+   "label": "Appraisal Creation Escalation Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "ceo_appraisal_alert_template",
+   "fieldtype": "Link",
+   "label": "CEO Appraisal Alert Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "appraisal_consent_terms",
+   "fieldtype": "Link",
+   "label": "Appraisal Consent Terms",
+   "options": "Terms and Conditions"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-10-14 15:55:39.570989",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Beams HR Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "All",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

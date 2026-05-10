@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:VS-{YY}-{#####}",
+ "creation": "2025-01-24 10:53:50.771157",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_nrae",
+  "inward_register",
+  "issued_date",
+  "card_no",
+  "column_break_eucm",
+  "issued_to",
+  "expire_on",
+  "returned_date",
+  "section_break_cofy",
+  "purpose_of_visit"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_nrae",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "inward_register",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Inward Register ",
+   "options": "Inward Register",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "issued_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Issued Date and Time",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "inward_register.visitor_name",
+   "fieldname": "issued_to",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Issued To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expire_on",
+   "fieldtype": "Datetime",
+   "label": "Expire on "
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "returned_date",
+   "fieldtype": "Datetime",
+   "label": "Returned Date and Time"
+  },
+  {
+   "fieldname": "column_break_eucm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cofy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "purpose_of_visit",
+   "fieldtype": "Small Text",
+   "label": "Purpose of visit"
+  },
+  {
+   "fieldname": "card_no",
+   "fieldtype": "Data",
+   "label": "Card No"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-02 13:59:51.892839",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Visitor Pass",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

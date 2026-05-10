@@ -1,0 +1,214 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:designation",
+ "creation": "2024-09-17 12:45:50.596082",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_fmn1",
+  "designation",
+  "mode_of_travel",
+  "room_rent_overnightbills_section",
+  "room_criteria",
+  "is_actual",
+  "column_break_rvoh",
+  "inside_kerala_",
+  "column_break_zcmt",
+  "outside_kerala_",
+  "daily_batta_with_overnight_stay_section",
+  "outside_kerala__",
+  "is_actual_",
+  "column_break_xaxj",
+  "inside_kerala__",
+  "daily_batta_without_over_night_stay_section",
+  "outside_kerala",
+  "is_actual__",
+  "column_break_ixxb",
+  "inside_kerala",
+  "food_allowance_section",
+  "break_fast",
+  "is_actual___",
+  "column_break_yfuo",
+  "lunch",
+  "column_break_ieaw",
+  "dinner"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_fmn1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Designation",
+   "options": "Designation",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "mode_of_travel",
+   "fieldtype": "Table MultiSelect",
+   "label": "Mode of Travel",
+   "options": "Mode of Travel Table"
+  },
+  {
+   "fieldname": "room_rent_overnightbills_section",
+   "fieldtype": "Section Break",
+   "label": "Room Rent for Overnight Stay"
+  },
+  {
+   "depends_on": "eval:doc.is_actual__ == \"0\"",
+   "fieldname": "outside_kerala",
+   "fieldtype": "Currency",
+   "label": "Outside Kerala"
+  },
+  {
+   "fieldname": "column_break_rvoh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_actual == \"0\"",
+   "fieldname": "room_criteria",
+   "fieldtype": "Table MultiSelect",
+   "label": "Room Criteria",
+   "options": "Room Criteria Table"
+  },
+  {
+   "depends_on": "eval:doc.is_actual == \"0\"",
+   "fieldname": "outside_kerala_",
+   "fieldtype": "Currency",
+   "label": "Outside Kerala"
+  },
+  {
+   "depends_on": "eval:doc.is_actual == \"0\"",
+   "fieldname": "inside_kerala_",
+   "fieldtype": "Currency",
+   "label": "Inside Kerala"
+  },
+  {
+   "fieldname": "daily_batta_with_overnight_stay_section",
+   "fieldtype": "Section Break",
+   "label": " Daily Batta With Overnight Stay"
+  },
+  {
+   "fieldname": "column_break_xaxj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_actual_ == \"0\"",
+   "fieldname": "outside_kerala__",
+   "fieldtype": "Currency",
+   "label": "Outside Kerala"
+  },
+  {
+   "depends_on": "eval:doc.is_actual_ == \"0\"",
+   "fieldname": "inside_kerala__",
+   "fieldtype": "Currency",
+   "label": "Inside Kerala"
+  },
+  {
+   "description": "Travel 100 kms with minimum 8 hours.\n",
+   "fieldname": "daily_batta_without_over_night_stay_section",
+   "fieldtype": "Section Break",
+   "label": "Daily Batta Without Overnight Stay"
+  },
+  {
+   "fieldname": "column_break_ixxb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_actual__ == \"0\"",
+   "fieldname": "inside_kerala",
+   "fieldtype": "Currency",
+   "label": "Inside Kerala"
+  },
+  {
+   "description": "Travel 50 kms with minimum 6 hours",
+   "fieldname": "food_allowance_section",
+   "fieldtype": "Section Break",
+   "label": "Food Allowance "
+  },
+  {
+   "depends_on": "eval:doc.is_actual___ == \"0\"",
+   "fieldname": "break_fast",
+   "fieldtype": "Currency",
+   "label": "BreakFast"
+  },
+  {
+   "depends_on": "eval:doc.is_actual___ == \"0\"",
+   "fieldname": "lunch",
+   "fieldtype": "Currency",
+   "label": "Lunch"
+  },
+  {
+   "fieldname": "column_break_yfuo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ieaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_actual___ == \"0\"",
+   "fieldname": "dinner",
+   "fieldtype": "Currency",
+   "label": "Dinner"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_actual",
+   "fieldtype": "Check",
+   "label": "Is Actual"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_actual_",
+   "fieldtype": "Check",
+   "label": "Is Actual"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_actual__",
+   "fieldtype": "Check",
+   "label": "Is Actual"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_actual___",
+   "fieldtype": "Check",
+   "label": "Is Actual"
+  },
+  {
+   "fieldname": "column_break_zcmt",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-02 13:42:15.306374",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Batta Policy",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

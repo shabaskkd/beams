@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{BND}-{YYYY}-{####}",
+ "creation": "2025-02-17 10:05:17.344093",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "parent_item",
+  "assets",
+  "scan_qr_code",
+  "column_break_idhv",
+  "bundles",
+  "section_break_xxjo",
+  "stock_items",
+  "qr_code",
+  "bundle_qr_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "stock_items",
+   "fieldtype": "Table",
+   "label": "Stock Items",
+   "options": "Asset Bundle Stock Item"
+  },
+  {
+   "fieldname": "assets",
+   "fieldtype": "Table MultiSelect",
+   "label": "Assets",
+   "options": "Assets"
+  },
+  {
+   "fieldname": "bundles",
+   "fieldtype": "Table MultiSelect",
+   "label": "Bundles",
+   "options": "Bundles"
+  },
+  {
+   "fieldname": "column_break_idhv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xxjo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "qr_code",
+   "fieldtype": "Attach Image",
+   "label": "QR Code"
+  },
+  {
+   "fieldname": "scan_qr_code",
+   "fieldtype": "Data",
+   "label": "Scan QR Code",
+   "options": "Barcode"
+  },
+  {
+   "fieldname": "bundle_qr_code",
+   "fieldtype": "Attach",
+   "label": "Bundle QR Code"
+  },
+  {
+   "fieldname": "parent_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Parent Item",
+   "options": "Item",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-26 17:07:06.899341",
+ "modified_by": "Administrator",
+ "module": "BEAMS",
+ "name": "Asset Bundle",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "parent_item",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
