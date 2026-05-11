@@ -1,6 +1,7 @@
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 from frappe.desk.page.setup_wizard.setup_wizard import make_records
 
+
 import frappe
 from frappe import _
 
