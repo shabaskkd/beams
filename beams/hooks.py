@@ -4,7 +4,7 @@ app_publisher = "shabas"
 app_description = "BEAMS (Broadcast Enterprise Administration Management System)"
 app_email = "shabaseravannur3@gmail.com"
 app_license = "mit"
-required_apps = ["frappe/erpnext", "frappe/hrms", "frappe/helpdesk", "shabaskkd/voucher_utility"]
+required_apps = ["frappe/erpnext", "frappe/hrms", "shabaskkd/helpdesk", "shabaskkd/voucher_utility"]
 # Includes in <head>
 # ------------------
 
