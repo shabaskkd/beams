@@ -1,6 +1,6 @@
 ## BEAMS
 
-BEAMS (Broadcast Enterprise Administration Management System)
+BEAMS    (Broadcast Enterprise Administration Management System)
 
 #### License
 
