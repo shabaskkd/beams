@@ -840,6 +840,12 @@ def get_customer_custom_fields():
 				"default": 0,
 				"no_copy":1,
 				"insert_after": "is_agent"
+			},
+			{
+				"fieldname": "credit_days",
+				"fieldtype": "Data",
+				"label": "Credit Days",
+				"insert_after": "account_manager"
 			}
 		]
 	}
